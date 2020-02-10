@@ -294,6 +294,27 @@ if __name__ == '__main__':
         xl.Run("UpdateDeckCover" + nameplate)
         xl.Run("SavePPT"+ nameplate)
         closeAndSaveWorkbook()
+
+    # Infiniti Industry Review
+    def Infiniti_IR(report_date, refresh_cube, monthend_or_MTD, share_date, spend_date, forecast):
+        nameplate = "Infiniti"
+        #Open template
+        openWorkbook(controlWorkbook)
+        xl.Run("OpenTemplate" + nameplate)
+        closeAndSaveWorkbook()
+        #Nameplate+Model Peformance Slides
+        openWorkbook(fileStringStart + nameplate + modelPerformanceWorkbook + nameplate + fileStringEnd)
+        xl.Run("update_slicer", report_date, refresh_cube, monthend_or_MTD, share_date, spend_date, forecast)  
+        xl.Run("PPTAllModels")
+        closeAndSaveWorkbook()
+        #Add Common Slides, Section Titles & Sort Slides
+        openWorkbook(controlWorkbook) 
+        xl.Run("CopyFromCommonSlides" + nameplate)
+        xl.Run("AddPPTSections" + nameplate)
+        xl.Run("Sort" + nameplate)
+        xl.Run("UpdateDeckCover" + nameplate)
+        xl.Run("SavePPT"+ nameplate)
+        closeAndSaveWorkbook()
         
     #Hyundai IP
     def Hyundai_IP(report_date, refresh_cube, monthend_or_MTD, share_date, spend_date, forecast):
@@ -487,6 +508,7 @@ if __name__ == '__main__':
         Mazda_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
         Mitsu_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
         Nissan_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+        Infiniti_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
     elif sys.argv[1] == 'Acura_IR':
         common_slides(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
         Acura_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
@@ -508,6 +530,9 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'Nissan_IR':
         common_slides(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
         Nissan_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+    elif sys.argv[1] == 'Infiniti_IR':
+        common_slides(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+        Infiniti_IR(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
     elif sys.argv[1] == 'Hyundai_IP':
         common_slides(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
         Hyundai_IP(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
