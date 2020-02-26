@@ -1,7 +1,7 @@
 Creates PowerPoint decks. Formatting and refreshing of data is handled in Excel/VBA; Python just strings together these workbooks so the entire process can run without the need for user interjection. 
 
 GUI Script:
-  - Calls on Master_Script_v2.py
+  - Calls on Master_Script_v3.py
   - Allows for user input including date, option to refresh data, option to choose which (or all) decks to run
   
 Master_Script:
